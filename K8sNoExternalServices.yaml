@@ -1,0 +1,20 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sNoExternalServices
+metadata:
+  name: example
+spec:
+  # match <object>: lets you configure which resources are in scope for this
+  # constraint. For more information, see the Policy Controller Constraint
+  # match documentation:
+  # https://cloud.google.com/anthos-config-management/docs/reference/match
+  match:
+    [match schema]
+  parameters:
+    # cloudPlatform <string>: The hosting cloud platform. Only `GCP` and `AWS`
+    # are supported currently.
+    cloudPlatform: <string>
+    # internalCIDRs <array>: A list of CIDRs that are only accessible
+    # internally, for example: `10.3.27.0/24`. Which IP ranges are
+    # internal-only is determined by the underlying network infrastructure.
+    internalCIDRs:
+      - <string>
